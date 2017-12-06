@@ -508,7 +508,6 @@ public class BaseRepositoryImpl<T extends BaseEntity> implements BaseRepository<
                 parseQL=parseQL.replace(item,PublicUtil.toAppendStr("\'",val,"\'"));
                 query.setParameter(key, val);
             }
-
             log.info("拼接好的QL-------》{}",parseQL);
         }
     }

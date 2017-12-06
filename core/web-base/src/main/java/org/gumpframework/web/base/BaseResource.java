@@ -15,9 +15,7 @@ public class BaseResource {
     public String bindException(Exception e, HttpServletRequest request, HttpServletResponse response){
         log.error("请求连接:{} 操作异常:{}",request.getRequestURI(),e.getMessage());
 
-
         String requestType = request.getHeader("X-Requested-With");
-
         writeJsonHttpResponse(e.getMessage().toString(),response);
         return null ;
     }
