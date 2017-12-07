@@ -1,12 +1,8 @@
-package org.gumpframework.util;
+package org.gumpframework.util.common;
 
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.persistence.Query;
-import java.util.Iterator;
-import java.util.Map;
 
 
 @SuppressWarnings("rawtypes")

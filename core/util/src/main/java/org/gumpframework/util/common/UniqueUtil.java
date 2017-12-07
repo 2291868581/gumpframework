@@ -1,4 +1,4 @@
-package org.gumpframework.util;
+package org.gumpframework.util.common;
 
 import java.util.UUID;
 

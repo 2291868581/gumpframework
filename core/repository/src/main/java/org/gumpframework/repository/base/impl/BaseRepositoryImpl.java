@@ -5,9 +5,9 @@ import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.gumpframework.domain.base.BaseEntity;
 import org.gumpframework.repository.base.BaseRepository;
-import org.gumpframework.util.PublicUtil;
-import org.gumpframework.util.QueryUtil;
-import org.gumpframework.util.bean.PageModel;
+import org.gumpframework.util.common.PublicUtil;
+import org.gumpframework.util.common.QueryUtil;
+import org.gumpframework.domain.bean.PageModel;
 import org.gumpframework.util.bean.Parameter;
 import org.gumpframework.util.bean.QueryCondition;
 import org.hibernate.Query;
@@ -510,5 +510,10 @@ public class BaseRepositoryImpl<T extends BaseEntity> implements BaseRepository<
             }
             log.info("拼接好的QL-------》{}",parseQL);
         }
+    }
+
+    @Override
+    public T save(T entity) {
+        return (T) getSession().save(entity);
     }
 }

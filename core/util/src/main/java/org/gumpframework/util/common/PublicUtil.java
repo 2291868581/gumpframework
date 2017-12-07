@@ -1,7 +1,8 @@
-package org.gumpframework.util;
+package org.gumpframework.util.common;
 
 import java.lang.reflect.Array;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -49,6 +50,12 @@ public class PublicUtil {
         return sb.toString();
     }
 
+    /**
+     * 将object对象转换为Long
+     * @param value
+     * @param defaultValue
+     * @return
+     */
     public static Long parseLong(Object value, long defaultValue) {
         try {
             return Long.parseLong(String.valueOf(value));
@@ -56,4 +63,5 @@ public class PublicUtil {
             return defaultValue;
         }
     }
+
 }

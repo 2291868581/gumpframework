@@ -1,8 +1,11 @@
-package org.gumpframework.service.impl;
+package org.gumpframework.service.sys.impl;
 
-import org.gumpframework.domain.sys.BackUser;
-import org.gumpframework.service.BackUserService;
+import org.gumpframework.domain.sys.SysUser;
+import org.gumpframework.repository.sys.SysUserRepository;
+import org.gumpframework.service.base.impl.BaseServiceImpl;
+import org.gumpframework.service.sys.SysUserService;
 import org.gumpframework.service.base.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +13,7 @@ import java.util.Map;
 
 
 @Service
-public class BackUserServiceImpl extends BaseService<BackUser> implements BackUserService {
-//    @Autowired
-//    private BackUserRepository backUserRepository;
+public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysUserService {
 
     @Override
     public List<Map<String,Object>> login(String name,String password){

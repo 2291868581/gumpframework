@@ -1,9 +1,9 @@
-package org.gumpframework.web.back.resource;
+package org.gumpframework.web.back.resource.sys;
 
 
 import org.gumpframework.web.base.BaseResource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.gumpframework.service.BackUserService;
+import org.gumpframework.service.sys.SysUserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +17,11 @@ import java.util.Map;
 public class MqResouce extends BaseResource {
 
     @Autowired
-    private BackUserService backUserService;
+    private SysUserService sysUserService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public List<Map<String,Object>> index(){
-        List<Map<String,Object>>  user = backUserService.login("代欣雨","123456");
+        List<Map<String,Object>>  user = sysUserService.login("代欣雨","123456");
         return user;
     }
 }

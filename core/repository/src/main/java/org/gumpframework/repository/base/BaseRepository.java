@@ -1,7 +1,7 @@
 package org.gumpframework.repository.base;
 
 import org.gumpframework.domain.base.BaseEntity;
-import org.gumpframework.util.bean.PageModel;
+import org.gumpframework.domain.bean.PageModel;
 import org.gumpframework.util.bean.QueryCondition;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
@@ -86,5 +86,5 @@ public interface BaseRepository<T extends BaseEntity> {
 
     Long getCountByHQL(String HQL,Object... params);
 
-
+    T save(T entity);
 }

@@ -1,4 +1,4 @@
-package org.gumpframework.util.bean;
+package org.gumpframework.domain.bean;
 
 
 import org.springframework.data.domain.Page;

@@ -11,10 +11,12 @@ import javax.persistence.Table;
 @Entity
 @Data
 @Table(name="sys_user_t")
-public class BackUser extends BaseEntity{
+public class SysUser extends BaseEntity{
 
     @Column(name = "name_")
-    private String anme;
+    private String name;
     @Column(name = "password_")
     private String password;
+
+
 }

@@ -2,7 +2,7 @@ package org.gumpframework.web.base;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.gumpframework.util.PublicUtil;
+import org.gumpframework.util.common.PublicUtil;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;

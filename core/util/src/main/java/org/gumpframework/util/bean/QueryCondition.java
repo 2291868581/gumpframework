@@ -1,7 +1,7 @@
 package org.gumpframework.util.bean;
 
 
-import org.gumpframework.util.PublicUtil;
+import org.gumpframework.util.common.PublicUtil;
 
 public class QueryCondition implements Comparable<QueryCondition>, java.io.Serializable {
 
