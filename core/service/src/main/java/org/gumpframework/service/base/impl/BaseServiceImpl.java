@@ -3,6 +3,8 @@ package org.gumpframework.service.base.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.gumpframework.domain.base.BaseEntity;
+import org.gumpframework.repository.base.BaseOrmRepository;
+import org.gumpframework.repository.base.BaseQlRepository;
 import org.gumpframework.repository.base.BaseRepository;
 import org.gumpframework.service.base.BaseService;
 import org.slf4j.Logger;
@@ -19,7 +21,7 @@ import java.lang.reflect.Type;
 @Transactional
 public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T>{
     @Autowired
-    public BaseRepository<T> baseRepository;
+    public BaseQlRepository<T> baseQlRepository;
 
     private Class<T> persistentClass;
 
@@ -32,11 +34,5 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T>{
             persistentClass = (Class<T>) parameterizedType[0];
         }
     }
-
-    @Override
-    public void save(T entity) {
-        baseRepository.save(entity);
-    }
-
 
 }
