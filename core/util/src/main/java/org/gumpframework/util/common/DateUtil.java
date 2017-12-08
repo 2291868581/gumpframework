@@ -285,7 +285,7 @@ public class DateUtil {
      *            日期对象
      * @return 本年开始时间
      */
-    public static Date getFirstDayOfYear(Date date) {
+    public static Date getFirstDayOfYear(Date date){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.MONTH, 0);
@@ -299,9 +299,7 @@ public class DateUtil {
 
     /**
      * 得到本月的开始时间
-     *
-     * @param date
-     *            日期对象
+     * @param date 日期对象
      * @return 本月开始时间
      */
     public static Date getFirstDayOfMonth(Date date) {
@@ -317,9 +315,7 @@ public class DateUtil {
 
     /**
      * 得到本周的开始时间
-     *
-     * @param date
-     *            日期对象
+     * @param date 日期对象
      * @return 本周开始时间，周一开始
      */
     public static Date getFirstDayOfWeek(Date date) {
@@ -356,37 +352,29 @@ public class DateUtil {
 
     /**
      * 得到本小时的开始时间
-     *
-     * @param date
-     *            日期对象
+     * @param date 日期对象
      * @return 本天的开始时间
      */
     public static Date getFirstTimeOfHour(Date date) {
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTime(date);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
-
         return calendar.getTime();
     }
 
     /**
      * 得到本天的结束时间
-     *
-     * @param date
-     *            日期对象
+     * @param date 日期对象
      * @return 本天的开始时间
      */
     public static Date getEndTimeOfDay(Date date) {
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, 23);
         calendar.set(Calendar.MINUTE, 59);
         calendar.set(Calendar.SECOND, 59);
-
         return calendar.getTime();
     }
 
@@ -394,16 +382,12 @@ public class DateUtil {
 
     /**
      * 得到日期的年份
-     *
-     * @param date
-     *            日期对象
+     * @param date 日期对象
      * @return 日期的年份
      */
     public static int getYear(Date date) {
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTime(date);
-
         return calendar.get(Calendar.YEAR);
     }
 
@@ -416,54 +400,40 @@ public class DateUtil {
      */
     public static int getMonthOfYear(Date date) {
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTime(date);
-
         return calendar.get(Calendar.MONTH) + 1;
     }
 
     /**
      * 得到日期是年中的第几周
-     *
-     * @param date
-     *            日期对象
+     * @param date   日期对象
      * @return 年中的第几周
      */
     public static int getWeekOfYear(Date date) {
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTime(date);
-
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
 
     /**
      * 得到日期是一年中的第几天 (1-366)
-     *
-     * @param date
-     *            日期对象
+     * @param date    日期对象
      * @return 年中的第几天
      */
     public static int getDayOfYear(Date date) {
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTime(date);
-
         return calendar.get(Calendar.DAY_OF_YEAR);
     }
 
     /**
      * 得到日期是一月中的第几天 (1-31)
-     *
-     * @param date
-     *            日期对象
+     * @param date   日期对象
      * @return 月中的第几天
      */
     public static int getDayOfMonth(Date date) {
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTime(date);
-
         return calendar.get(Calendar.DAY_OF_MONTH);
     }
 
@@ -476,9 +446,7 @@ public class DateUtil {
      */
     public static int getDayOfWeek(Date date) {
         Calendar calendar = Calendar.getInstance();
-
         calendar.setTime(date);
-
         return calendar.get(Calendar.DAY_OF_WEEK);
     }
 
@@ -574,9 +542,6 @@ public class DateUtil {
         return false;
     }
 
-
-
-
     /**
      * 根据数字得到对应的星期名字
      *
@@ -605,7 +570,6 @@ public class DateUtil {
                 return "无效数字";
         }
     }
-
     /**
      * 根据数字得到对应的时间段名字
      *
@@ -692,8 +656,6 @@ public class DateUtil {
         return  calendar.getTime();
     }
 
-
-
     /**
      * 获取某个时间段内的所有日期
      * */
@@ -710,7 +672,6 @@ public class DateUtil {
             lDate.add(calBegin.getTime());
             // 根据日历的规则，为给定的日历字段添加或减去指定的时间量
             calBegin.add(Calendar.DAY_OF_MONTH, 1);
-
         }
         if(DateUtil.getDayOfMonth(calEnd.getTime()) == DateUtil.getDayOfMonth(calBegin.getTime())){
             lDate.add(calEnd.getTime());
@@ -765,11 +726,7 @@ public class DateUtil {
         return  monthList;
     }
 
-
-
-
     //addMethod
-
     /**
      * 获取date的月份的时间范围
      * @param date
@@ -792,8 +749,6 @@ public class DateUtil {
 
         return dateMap;
     }
-
-
 
     /**
      * 获取昨天的时间范围
@@ -957,14 +912,10 @@ public class DateUtil {
         Calendar thisMonth = Calendar.getInstance();
         thisMonth.setTime(date);
         int nowMonth = thisMonth.get(Calendar.MONTH)+1;
-
         Map<String,Date>  dateRange = getThisQuarter(new Date());
-
-
         Calendar thisQuarter = Calendar.getInstance();
         thisQuarter.setTime(dateRange.get(END));
         int maxMonth = thisQuarter.get(Calendar.MONTH)+1;
-
         if (nowMonth<maxMonth){
             return 1;
         }else if (nowMonth>maxMonth){
@@ -972,7 +923,6 @@ public class DateUtil {
         }else {
             return 3;
         }
-
     }
 
     /**
@@ -983,9 +933,7 @@ public class DateUtil {
         Calendar thisMonth = Calendar.getInstance();
         thisMonth.setTime(date);
         int nowMonth = thisMonth.get(Calendar.MONTH)+1;
-
         int maxMonth = 12;
-
         if (nowMonth==maxMonth){
             return true;
         }
@@ -1005,7 +953,6 @@ public class DateUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         Calendar end = Calendar.getInstance();
         try {
             end.setTime(new Date());
@@ -1018,7 +965,6 @@ public class DateUtil {
         Map<String,Date> dateMap = Maps.newHashMap();
         dateMap.put(START,start.getTime());
         dateMap.put(END,end.getTime());
-
         return dateMap;
     }
 
