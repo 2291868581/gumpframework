@@ -28,9 +28,6 @@ public interface BaseRepository<T extends BaseEntity> {
     /** 清除缓存数据 */
     void clear();
 
-    Query createQuery(String HQL, Object... params);
-    SQLQuery createSqlQuery(String SQL, Object... params);
-
     Object getByHQL(String HQL, boolean isList, List<QueryCondition> conditionList, Object... params);
 
     Object getByHQL(String HQL, boolean isList, int maxSize, List<QueryCondition> conditionList, Object... params);
@@ -86,5 +83,5 @@ public interface BaseRepository<T extends BaseEntity> {
 
     Long getCountByHQL(String HQL,Object... params);
 
-    T save(T entity);
+    void save(T entity);
 }

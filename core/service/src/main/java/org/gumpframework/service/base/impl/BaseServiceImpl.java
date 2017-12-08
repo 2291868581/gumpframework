@@ -1,6 +1,7 @@
 package org.gumpframework.service.base.impl;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.gumpframework.domain.base.BaseEntity;
 import org.gumpframework.repository.base.BaseRepository;
 import org.gumpframework.service.base.BaseService;
@@ -14,10 +15,9 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 @Service
+@Slf4j
 @Transactional
 public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T>{
-    public final Logger log = LoggerFactory.getLogger(getClass());
-
     @Autowired
     public BaseRepository<T> baseRepository;
 
@@ -34,7 +34,9 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T>{
     }
 
     @Override
-    public T save(T entity) {
-        return baseRepository.save(entity);
+    public void save(T entity) {
+        baseRepository.save(entity);
     }
+
+
 }

@@ -26,7 +26,7 @@ public class PageModel<T> implements Pageable, Serializable {
     /**
      * 是否只获取分页数据，方便接口直接复用
      */
-    private Boolean usePage;
+    private Boolean usePage=true;
 
     private long recordsFiltered;
     private long recordsTotal;
