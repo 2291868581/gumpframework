@@ -5,7 +5,6 @@ import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.gumpframework.util.bean.Parameter;
 import org.gumpframework.util.common.PublicUtil;
-import org.gumpframework.util.common.QueryUtil;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -25,9 +24,9 @@ public class RepositoryUtil {
     public static List parseSqlRsList(List lst, boolean isSql, String QL) {
         if (lst != null && lst.size() > 0) {
             if (isSql && (QL.contains(" as ") || QL.contains(" AS "))) {
-                int fromIndex = org.gumpframework.util.common.QueryUtil.findOuterFromIndex(QL.toUpperCase());  //在sql中寻找与最外层select对应的from的index 调用前请先转成大写。
+                int fromIndex = findOuterFromIndex(QL.toUpperCase());  //在sql中寻找与最外层select对应的from的index 调用前请先转成大写。
                 String columnStr = QL.substring(7, fromIndex);
-                String[] columns = org.gumpframework.util.common.QueryUtil.getColumnNames3(columnStr); //獲取到的sql中的as key
+                String[] columns = getColumnNames3(columnStr); //獲取到的sql中的as key
                 List<Map<String, Object>> rsList = Lists.newArrayList(); //返回的結果
                 Map<String, Object> map = Maps.newHashMap();
                 for (Object item : lst) { //遍歷每一行
@@ -106,7 +105,7 @@ public class RepositoryUtil {
         try {
             String temp = "", tempSql = QL.toUpperCase();
             if (tempSql.indexOf("SELECT") != -1) {
-                temp = QL.substring(QueryUtil.findOuterFromIndex(tempSql));
+                temp = QL.substring(findOuterFromIndex(tempSql));
             } else {
                 temp = QL;
             }
@@ -125,5 +124,109 @@ public class RepositoryUtil {
         return sb.toString();
     }
 
+    /**
+     * 在sql中寻找与最外层select对应的from的index 调用前请先转成大写。
+     *
+     * @param tempSql
+     * @return
+     */
+    public static  int findOuterFromIndex(String tempSql) {
+        int selectNum = 0, fromIndex = -1;
+        for (int i = 0; i < tempSql.length() - 7;) { // 挨着寻找
+            char ch = tempSql.charAt(i);
+            if ('S' != ch && 'F' != ch) {
+                i++;
+                continue;
+            }
+            String select = tempSql.substring(i, i + 7); // 防止selects
+            String from = tempSql.substring(i, i + 5); // 防止froms干扰
+            if ("SELECT ".equals(select)) { // 找到select关键词
+                selectNum++;
+                i = i + 7;
+                continue;
+            } else if ("FROM ".equals(from)) { // 找到from关键词
+                selectNum--;
+                if (selectNum == 0) { // 已经找到相应from
+                    fromIndex = i;
+                    break;
+                }
+                i = i + 5;
+            }
+            i++;
+        }
+        if (selectNum > 0 || fromIndex < 8) {
+            throw new RuntimeException("sql语句中select与from不对应，请检查sql语句：" + tempSql);
+        }
+        return fromIndex;
+    }
 
+    /**
+     * 在sql中寻找与最外层select对应的GroupBy的index 调用前请先转成大写。
+     *
+     * @param tempSql
+     * @return
+     */
+    public static  int findOuterGroupByIndex(String tempSql) {
+        int selectNum = 0, groupByIndex = -1;
+        for (int i = 0; i < tempSql.length() - 9;) { // 挨着寻找
+            char ch = tempSql.charAt(i);
+            if ('S' != ch && 'G' != ch) {
+                i++;
+                continue;
+            }
+            String select = tempSql.substring(i, i + 7); // 防止selects
+            String groupBy = tempSql.substring(i, i + 9);
+            if ("SELECT ".equals(select)) { // 找到select关键词
+                selectNum++;
+                i = i + 7;
+                continue;
+            } else if ("GROUP BY ".equals(groupBy)) { // 找到groupBy关键词
+                selectNum--;
+                if (selectNum == 0) { // 已经找到相应groupBy
+                    groupByIndex = i;
+                    break;
+                }
+                i = i + 9;
+            }
+            i++;
+        }
+        return groupByIndex;
+    }
+
+    /**
+     * 用队列思想实现分离别名 1 更加columnStr定义两个char数组。 2 遍历值数组，得到每个列名和逗号。 3 在将得到的列名串转成列名数组。
+     *
+     * @param colunmStr
+     * @return
+     */
+    public static String[] getColumnNames3(String colunmStr) {
+        char[] array = colunmStr.toCharArray();
+        StringBuffer sb = new StringBuffer();
+        StringBuffer tempSb = new StringBuffer();
+        int bracketCount = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == '(') {
+                bracketCount++;
+                continue;
+            }
+            if (array[i] == ')') {
+                bracketCount--;
+                continue;
+            }
+            if (bracketCount == 0) {
+                if (array[i] != ' ' && array[i] != ',') {
+                    tempSb.append(array[i]);
+                } else if (array[i] == ' '
+                        && (i < array.length - 1 && !(array[i + 1] == ' ') && !(array[i + 1] == ','))) {
+                    tempSb.delete(0, tempSb.length());
+                } else if (array[i] == ',') {
+                    tempSb.append(array[i]);
+                    sb.append(tempSb.toString());
+                    tempSb.delete(0, tempSb.length());
+                }
+            }
+        }
+        sb.append(tempSb.toString());
+        return sb.toString().split(",");
+    }
 }

@@ -4,11 +4,8 @@ import com.dai.test.entity.client.UserInfo;
 import com.dai.test.repository.client.UserInfoRepository;
 import com.dai.test.service.client.UserInfoService;
 import org.gumpframework.domain.bean.PageModel;
-import org.gumpframework.domain.sys.SysUser;
 import org.gumpframework.repository.base.BaseOrmRepository;
-import org.gumpframework.service.base.BaseService;
 import org.gumpframework.service.base.impl.BaseServiceImpl;
-import org.gumpframework.service.sys.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +17,8 @@ import java.util.Map;
 public class UserInfoServiceImpl extends BaseServiceImpl<UserInfo> implements UserInfoService {
     @Autowired
     private UserInfoRepository userInfoRepository;
+    @Autowired
+    private BaseOrmRepository baseOrmRepository;
 
     @Override
     public List<Map<String,Object>> login(String name,String password){

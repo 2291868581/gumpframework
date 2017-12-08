@@ -42,7 +42,7 @@ public class BaseEntity implements Serializable{
     /** 创建时间 */
     @CreatedDate
     @Column(name = "created_date",nullable = false)
-    protected Date createdDate = DateUtil.getCurrentDate();
+    protected Date createdDate = DateUtil.getCurrentTime();
 
     /** 更新的用户 */
     @LastModifiedBy
@@ -56,7 +56,7 @@ public class BaseEntity implements Serializable{
     /** 更新时间 */
     @LastModifiedDate
     @Column(name = "update_date")
-    protected Date updateDate = DateUtil.getCurrentDate();
+    protected Date updateDate = DateUtil.getCurrentTime();
 
     /*** 默认0，必填，离线乐观锁 */
     @Version

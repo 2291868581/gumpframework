@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.Optional;
 
 /**
- * 后台管理用户Dao
+ * 客户端用户Repository
  */
 public interface UserInfoRepository extends JpaRepository<UserInfo,String>,JpaSpecificationExecutor<UserInfo>{
     Optional<UserInfo> findOneById(String id);

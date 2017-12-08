@@ -23,7 +23,6 @@ public class UserInfoResource extends BaseResource{
         UserInfo userInfo = new UserInfo();
         userInfo.setName("代欣雨");
         userInfo.setPassword("123456");
-        userInfoService.save(userInfo);
         return userInfoService.login("代欣雨","123456");
     }
 
