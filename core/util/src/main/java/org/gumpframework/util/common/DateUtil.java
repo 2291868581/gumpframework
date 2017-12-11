@@ -17,50 +17,38 @@ import java.util.*;
  * @author Administrator
  */
 public class DateUtil {
-
-    /** 日期格式 yyyy-MM-dd */
-    public static final String DateFormat1 = "yyyy-MM-dd";
-
-    /** 日期格式 yyyy年MM月dd日 */
-    public static final String DateFormat2 = "yyyy年MM月dd日";
-
-    public static final String DateFormat3 = "yyyy-MM-dd HH:mm:ss";
-
-    public static final String DateFormat4 = "HH:mm:ss";
-
-    public static final String DateFormat5 = "MM-dd";
-
-    public static final String dateFormat6 = "yyyyMMdd";
-
+    public static final String[] formates = {"yyyy-MM-dd","yyyy年MM月dd日","yyyy-MM-dd HH:mm:ss","HH:mm:ss","MM-dd"};
+    public enum DateFormate {
+        yMd,
+        CHNyMd,
+        yMdHms,
+        Hms,
+        Md
+    }
     public static final String START="start";
 
     public static final String END="end";
 
-    public static String convertDate(String datestr, String format1, String format2) {
-
-        return getFormatDate(getDateFromStr(datestr, format1), format2);
-    }
 
     /**
      * 根据日期字符返回日期对象
      *
-     * @param datestr
+     * @param dateStr
      *            比如：2006-02-03
      * @param format
      *            比如yyyy-MM-dd
      * @return 日期对象
      */
-    public static Date getDateFromStr(String datestr, String format) {
-        if (datestr == null || "".equalsIgnoreCase(datestr)) {
+    public static Date parseToDate(String dateStr, DateFormate format) {
+        if (dateStr == null || "".equalsIgnoreCase(dateStr)) {
             return null;
         }
-
-        SimpleDateFormat dateformat = new SimpleDateFormat(format);
+        String formatValue = formates[format.ordinal()];
+        SimpleDateFormat dateFormat = new SimpleDateFormat(formatValue);
         Date result = null;
         try {
-            result = dateformat.parse(datestr);
+            result = dateFormat.parse(dateStr);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return result;
@@ -79,7 +67,6 @@ public class DateUtil {
         if (indate == null) {
             return "";
         }
-
         SimpleDateFormat dateformat = new SimpleDateFormat(format);
 
         return dateformat.format(indate);
@@ -1016,8 +1003,8 @@ public class DateUtil {
     }
 
 
-    public static String format(Date date){
-        SimpleDateFormat sdf = new SimpleDateFormat(DateFormat3);
+    public static String formatDefault(Date date){
+        SimpleDateFormat sdf = new SimpleDateFormat(formates[3]);
         if(date==null){
           return null;
         }
@@ -1039,12 +1026,11 @@ public class DateUtil {
             dateRanges.add(dateMap);
             nowDate=before;
         }
-
         return dateRanges;
     }
 
     /**
-     * 获取当前日期的最后时间
+     * 获取指定日期的最后时间
      * @param date
      * @return
      */
@@ -1055,7 +1041,6 @@ public class DateUtil {
         calendar.set(Calendar.MINUTE, 59);
         calendar.set(Calendar.SECOND, 59);
         calendar.set(Calendar.MILLISECOND, 99);
-
         return calendar.getTime();
     }
 

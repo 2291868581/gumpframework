@@ -2,16 +2,15 @@ package com.dai.test.entity.client;
 
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.gumpframework.domain.base.BaseEntity;
-import org.gumpframework.util.common.UniqueUtil;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Data
 @Table(name="bs_user_info")
-@EqualsAndHashCode(callSuper = false)
 public class UserInfo extends BaseEntity {
 
     @Column(name = "name_")
