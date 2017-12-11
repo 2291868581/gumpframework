@@ -2,6 +2,7 @@ package com.dai.test.resource.client;
 
 import com.dai.test.entity.client.UserInfo;
 import com.dai.test.service.client.UserInfoService;
+import org.gumpframework.domain.bean.PageModel;
 import org.gumpframework.web.base.BaseResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,12 @@ public class UserInfoResource extends BaseResource{
         UserInfo userInfo = new UserInfo();
         userInfo.setName("代欣雨");
         userInfo.setPassword("123456");
-        userInfoService.save(userInfo);
         return userInfoService.login("代欣雨","123456");
+    }
+
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
+    public PageModel<Map<String,Object>> page(){
+        PageModel<Map<String,Object>> pm = new PageModel<>();
+        return userInfoService.getPage(pm,"代欣雨","123456");
     }
 }
