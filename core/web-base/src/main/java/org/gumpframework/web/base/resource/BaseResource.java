@@ -1,4 +1,4 @@
-package org.gumpframework.web.base;
+package org.gumpframework.web.base.resource;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,6 @@ public class BaseResource {
     @ExceptionHandler
     public String bindException(Exception e, HttpServletRequest request, HttpServletResponse response){
         log.error("请求连接:{} 操作异常:{}",request.getRequestURI(),e.getMessage());
-
         String requestType = request.getHeader("X-Requested-With");
         writeJsonHttpResponse(e.getMessage().toString(),response);
         return null ;
