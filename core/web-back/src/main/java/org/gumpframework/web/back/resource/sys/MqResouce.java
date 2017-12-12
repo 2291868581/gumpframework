@@ -1,7 +1,7 @@
 package org.gumpframework.web.back.resource.sys;
 
 
-import org.gumpframework.web.base.BaseResource;
+import org.gumpframework.web.base.resource.BaseResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.gumpframework.service.sys.SysUserService;
 import org.springframework.web.bind.annotation.RequestMapping;
