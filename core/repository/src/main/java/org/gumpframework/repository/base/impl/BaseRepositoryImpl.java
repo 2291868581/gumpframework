@@ -26,7 +26,7 @@ import java.util.Map;
 public class BaseRepositoryImpl<T extends BaseEntity> implements BaseRepository<T> {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    EntityManager entityManager;
 
     @Override
     public Session getSession() {
