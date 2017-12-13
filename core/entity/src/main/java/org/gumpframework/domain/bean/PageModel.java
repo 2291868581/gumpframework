@@ -20,14 +20,12 @@ public class PageModel<T> implements Pageable, Serializable {
 
     private int page;
     private int size;
-
     private Sort sort;
 
     /**
      * 是否只获取分页数据，方便接口直接复用
      */
     private Boolean usePage=true;
-
     private long recordsFiltered;
     private long recordsTotal;
     private List<Map<String, Object>> extraList;
@@ -35,7 +33,6 @@ public class PageModel<T> implements Pageable, Serializable {
     private Object extraData;
     private int draw;
     private int totalPage;
-
     private List<T> data;
 
     public long getRecordsTotal() {

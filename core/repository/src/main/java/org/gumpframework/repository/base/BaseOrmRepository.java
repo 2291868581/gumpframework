@@ -12,4 +12,5 @@ import org.gumpframework.domain.base.BaseEntity;
 public interface BaseOrmRepository<T extends BaseEntity> extends BaseRepository<T> {
     void save(T entity);
     void delete(T entity);
+
 }
