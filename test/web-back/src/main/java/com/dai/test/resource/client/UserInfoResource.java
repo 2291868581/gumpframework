@@ -3,7 +3,7 @@ package com.dai.test.resource.client;
 import com.dai.test.entity.client.UserInfo;
 import com.dai.test.service.client.UserInfoService;
 import org.gumpframework.domain.bean.PageModel;
-import org.gumpframework.web.base.BaseResource;
+import org.gumpframework.web.base.resource.BaseResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "test")
-public class UserInfoResource extends BaseResource{
+public class UserInfoResource extends BaseResource {
     @Autowired
     private UserInfoService userInfoService;
 

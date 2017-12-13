@@ -6,13 +6,15 @@ import org.gumpframework.domain.base.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Data
 @Table(name="bs_user_info")
 public class UserInfo extends BaseEntity {
-
+    @Id
+    private String  id;
     @Column(name = "name_")
     private String name;
     @Column(name = "password_")
