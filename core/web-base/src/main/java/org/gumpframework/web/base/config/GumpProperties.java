@@ -9,4 +9,5 @@ public class GumpProperties {
     private String adminPath = "/a";
     private String adminPicPath;
     private String clientPath;
+    private String homeAddress;
 }

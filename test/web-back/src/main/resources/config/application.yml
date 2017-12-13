@@ -29,6 +29,8 @@ spring:
         timeout: 10000
         pool:
           max-idle: 6
+gump:
+  home-address:
 
 
 

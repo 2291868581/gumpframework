@@ -8,6 +8,7 @@ import org.gumpframework.repository.base.BaseOrmRepository;
 import org.gumpframework.repository.base.BaseQlRepository;
 import org.gumpframework.service.base.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,10 +23,13 @@ public class UserInfoServiceImpl extends BaseServiceImpl<UserInfo> implements Us
     private BaseOrmRepository baseOrmRepository;
     @Autowired
     private BaseQlRepository baseQlRepository;
+    @Autowired
+    private RedisCacheManager cacheManager;
 
     @Override
     public List<Map<String,Object>> login(String name,String password){
         String sql = " SELECT a.name_ AS name,a.password_ AS password,a.id_ AS id from bs_user_info a where a.name_=:p1 and a.password_=:p2 ";
+        cacheManager.getCache("name").put("123","222222");
         return baseQlRepository.getListBySQL(sql,name,password);
     }
 
