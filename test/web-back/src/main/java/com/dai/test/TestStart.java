@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
@@ -17,6 +18,7 @@ import java.net.InetAddress;
 @ComponentScan(basePackages = {"com.dai.*","org.gumpframework.*"})
 @SpringBootApplication
 @EnableConfigurationProperties({GumpProperties.class})
+@EnableCaching
 public class TestStart {
 
     private static  final Logger logger = LoggerFactory.getLogger(TestStart.class);

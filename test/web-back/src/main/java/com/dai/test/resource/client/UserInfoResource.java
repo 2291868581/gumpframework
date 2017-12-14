@@ -20,9 +20,9 @@ public class UserInfoResource extends BaseResource {
 
     @RequestMapping(value = "/test",method = RequestMethod.GET)
     public List<Map<String,Object>> test(){
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName("代欣雨");
-        userInfo.setPassword("123456");
+//        UserInfo userInfo = new UserInfo();
+//        userInfo.setName("代欣雨");
+//        userInfo.setPassword("123456");
         return userInfoService.login("代欣雨","123456");
     }
 
