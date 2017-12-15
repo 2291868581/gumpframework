@@ -1,6 +1,5 @@
 package com.dai.test.resource.client;
 
-import com.dai.test.entity.client.UserInfo;
 import com.dai.test.service.client.UserInfoService;
 import org.gumpframework.domain.bean.PageModel;
 import org.gumpframework.web.base.resource.BaseResource;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
@@ -18,12 +17,13 @@ public class UserInfoResource extends BaseResource {
     @Autowired
     private UserInfoService userInfoService;
 
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public List<Map<String,Object>> test(){
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public String  test(HttpServletRequest request){
 //        UserInfo userInfo = new UserInfo();
 //        userInfo.setName("代欣雨");
 //        userInfo.setPassword("123456");
-        return userInfoService.login("代欣雨","123456");
+
+       return "服务器2 + 8066"+request.getSession().getId();
     }
 
     @RequestMapping(value = "/page",method = RequestMethod.GET)

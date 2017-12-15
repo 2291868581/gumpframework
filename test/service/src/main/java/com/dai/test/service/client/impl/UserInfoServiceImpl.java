@@ -33,7 +33,7 @@ public class UserInfoServiceImpl extends BaseServiceImpl<UserInfo> implements Us
 
     @Cacheable(key = "#p0")
     @Override
-    public List<Map<String,Object>> login(@Param("name") String name, String password){
+    public List<Map<String,Object>> login(String name, String password){
         String sql = " SELECT a.name_ AS name,a.password_ AS password,a.id_ AS id from bs_user_info a where a.name_=:p1 and a.password_=:p2 ";
         return baseQlRepository.getListBySQL(sql,name,password);
     }

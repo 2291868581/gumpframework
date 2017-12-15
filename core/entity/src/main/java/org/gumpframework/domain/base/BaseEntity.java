@@ -34,6 +34,7 @@ public class BaseEntity implements Serializable{
     @CreatedBy
     @Column(name = "created_id", nullable = false, length = 50, updatable = false)
     public String createId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_id",updatable = false,insertable = false)
     @NotFound(action = NotFoundAction.IGNORE)
@@ -58,11 +59,6 @@ public class BaseEntity implements Serializable{
     @Column(name = "update_date")
     public Date updateDate = DateUtil.getCurrentTime();
 
-    /*** 默认0，必填，离线乐观锁 */
-    @Version
-    @Column(name = "version_")
-    @XmlTransient
-    public Integer version = 0;
 
     /*** 备注 */
     @Column(name = "description_",length = 255)
