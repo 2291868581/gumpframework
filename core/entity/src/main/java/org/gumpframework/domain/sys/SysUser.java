@@ -18,5 +18,4 @@ public class SysUser extends BaseEntity{
     @Column(name = "password_")
     private String password;
 
-
 }

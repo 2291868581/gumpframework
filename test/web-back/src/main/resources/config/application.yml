@@ -1,12 +1,12 @@
 server:
-    port: 8060
+    port: 8066
 spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/gump?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/frame?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
-        password: 200904
+        password: 123698745
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -29,6 +29,7 @@ spring:
         timeout: 10000
         pool:
           max-idle: 6
+        password: bosheng906!
 gump:
   home-address:
 

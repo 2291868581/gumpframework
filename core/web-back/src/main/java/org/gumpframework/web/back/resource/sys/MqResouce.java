@@ -1,6 +1,7 @@
 package org.gumpframework.web.back.resource.sys;
 
 
+import org.gumpframework.domain.sys.SysUser;
 import org.gumpframework.web.base.resource.BaseResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.gumpframework.service.sys.SysUserService;
@@ -13,7 +14,7 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/sysUser")
 public class MqResouce extends BaseResource {
 
     @Autowired
@@ -24,4 +25,15 @@ public class MqResouce extends BaseResource {
         List<Map<String,Object>>  user = sysUserService.login("代欣雨","123456");
         return user;
     }
+
+    @RequestMapping(value = "/save",method = RequestMethod.GET)
+    public String  save(){
+
+        SysUser sysUser = new SysUser();
+        sysUser.setName("daixinxyu");
+        sysUser.setPassword("111111111");
+        sysUserService.save(sysUser);
+        return "成功";
+    }
+
 }

@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 @Component
 @Slf4j
@@ -33,6 +34,10 @@ public class BaseOrmRepositoryImpl<T extends BaseEntity> extends BaseRepositoryI
             pm = new PageModel<>();
         }
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        Root<T> root  = getRoot(criteriaQuery); //获取对象类型
+//        addFilter(criteriaQuery,pm);//添加查询类型
+//        addOrders(criteriaQuery,pm);//添加排序
+        
         return null;
     }
 

@@ -2,6 +2,8 @@ package com.dai.test.resource.client;
 
 import com.dai.test.service.client.UserInfoService;
 import org.gumpframework.domain.bean.PageModel;
+import org.gumpframework.domain.sys.SysUser;
+import org.gumpframework.service.sys.SysUserService;
 import org.gumpframework.web.base.resource.BaseResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +18,18 @@ import java.util.Map;
 public class UserInfoResource extends BaseResource {
     @Autowired
     private UserInfoService userInfoService;
+    @Autowired
+    private SysUserService sysUserService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String  test(HttpServletRequest request){
 //        UserInfo userInfo = new UserInfo();
 //        userInfo.setName("代欣雨");
 //        userInfo.setPassword("123456");
+        SysUser sysUser = new SysUser();
+        sysUser.setName("dddddd");
+        sysUser.setPassword("11111");
+        sysUserService.save(sysUser);
 
        return "服务器2 + 8066"+request.getSession().getId();
     }
