@@ -27,8 +27,7 @@
     @Autowired
     private UserInfoRepository userInfoRepository;//spring data jpa的代理实现接口，可以在该接口中实现方法式编程，不用编写自己的实现
     
-    
-    //QlRepository  编程
+    QlRepository  编程
     @Cacheable(key = "#p0")
     @Override
     public List<Map<String,Object>> login(String name, String password){
@@ -36,8 +35,11 @@
         return baseQlRepository.getListBySQL(sql,name,password);
     }
     
-    //ORMRepository 编程
+    ORMRepository 编程
     @Override
     public void save(T entity) {
         this.baseOrmRepository.save(entity);
     }
+
+    
+    
