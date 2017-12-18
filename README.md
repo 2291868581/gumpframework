@@ -11,11 +11,11 @@
 
 #最新更新介绍
  core包介绍
- 1、core包下的entity将封装 系统自用的entity，模块化，现在core源码中，大家可以按照自己的需求修改
- 2、core包下的repository是本框架的核心：里面已经封装好了 QlRepository 和 ORMRepository 
+ 1、core包下的entity将封装 系统自用的entity，模块化，现在core源码中，大家可以按照自己的需求修改  
+ 2、core包下的repository是本框架的核心：里面已经封装好了 QlRepository 和 ORMRepository   
     QlRepository 主要是用于 sql 和 hql 编程用的实现，实现了参数动态绑定，sql结果集封装为List<map>等（不用再写繁多的entity来对应，并简化代码）
-    ORMRepository主要用户ORM方式的查询，提供面对对象的可读性极高的查询方式
-    这两个模块用户可以在service层中按照自己的需求随意调用
+    ORMRepository主要用户ORM方式的查询，提供面对对象的可读性极高的查询方式  
+    这两个模块用户可以在service层中按照自己的需求随意调用  
  3、同时repository 项目模块还整合了spring data jpa，用户可以继承repository接口后，用spring data jpa的方法编程去读写数据库
    这三个模块相辅相成，不冲突，不耦合，用户可以自己选择自己喜欢的方式注入到service中开发。（如下）
     
