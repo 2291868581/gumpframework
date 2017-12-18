@@ -6,5 +6,5 @@
 1、在git的master分支为稳定版，迭代更新版在test上面。  
 2、项目为core 和test两个项目，core为基础框架，test为实际开发框架。  
 3、下载项目之后，需要将core用mvn clean install 命令将core基础框架安装到本地仓库。  
-4、然后打开test项目启动web-back下的TestStart.java文件即可访问  
+4、然后打开test项目启动web-back下的TestStart.java，运行基础sql，并配置自己的数据库，test文件即可访问 
 5、提示：此框架会不断更新，加入更多实用功能。现阶段只是基础版本，没有包含页面和代码生成器，之后会加入。希望大家耐心等待
