@@ -21,7 +21,6 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T>{
     public BaseQlRepository<T> baseQlRepository;
     @Autowired
     public BaseOrmRepository<T> baseOrmRepository;
-
     private Class<T> persistentClass;
 
     @SuppressWarnings("unchecked")
@@ -33,8 +32,14 @@ public class BaseServiceImpl<T extends BaseEntity> implements BaseService<T>{
             persistentClass = (Class<T>) parameterizedType[0];
         }
     }
+
     @Override
     public void save(T entity){
         baseOrmRepository.save(entity);
+    }
+
+    @Override
+    public void delete(T entity) {
+        baseOrmRepository.delete(entity);
     }
 }

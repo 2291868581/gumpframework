@@ -4,6 +4,8 @@ import lombok.Data;
 import org.gumpframework.domain.sys.SysUser;
 import org.gumpframework.util.common.DateUtil;
 import org.gumpframework.util.common.UniqueUtil;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.annotation.CreatedBy;
@@ -20,7 +22,10 @@ import java.util.Date;
  *  create by GumpDai
  */
 @Data
-public class BaseEntity implements Serializable{
+@MappedSuperclass
+@DynamicUpdate
+@DynamicInsert
+public class BaseEntity  implements Serializable{
 
     @Id
     @Column(name = "id_",nullable = false)
@@ -30,6 +35,7 @@ public class BaseEntity implements Serializable{
     private void prePersist(){
         this.id = UniqueUtil.uuid();
     }
+
     /** 用户 */
     @CreatedBy
     @Column(name = "created_id", nullable = false, length = 50, updatable = false)

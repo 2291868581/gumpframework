@@ -37,7 +37,6 @@ public class BaseOrmRepositoryImpl<T extends BaseEntity> extends BaseRepositoryI
 //        Root<T> root  = getRoot(criteriaQuery); //获取对象类型
 //        addFilter(criteriaQuery,pm);//添加查询类型
 //        addOrders(criteriaQuery,pm);//添加排序
-        
         return null;
     }
 

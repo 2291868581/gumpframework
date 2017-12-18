@@ -13,11 +13,8 @@ import javax.persistence.Table;
 @Data
 @Table(name="bs_user_info")
 public class UserInfo extends BaseEntity {
-    @Id
-    private String  id;
     @Column(name = "name_")
     private String name;
     @Column(name = "password_")
     private String password;
-
 }

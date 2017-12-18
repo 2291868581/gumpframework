@@ -28,7 +28,6 @@ public class MqResouce extends BaseResource {
 
     @RequestMapping(value = "/save",method = RequestMethod.GET)
     public String  save(){
-
         SysUser sysUser = new SysUser();
         sysUser.setName("daixinxyu");
         sysUser.setPassword("111111111");

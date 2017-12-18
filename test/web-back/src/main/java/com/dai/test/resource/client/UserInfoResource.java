@@ -23,14 +23,10 @@ public class UserInfoResource extends BaseResource {
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String  test(HttpServletRequest request){
-//        UserInfo userInfo = new UserInfo();
-//        userInfo.setName("代欣雨");
-//        userInfo.setPassword("123456");
         SysUser sysUser = new SysUser();
-        sysUser.setName("dddddd");
-        sysUser.setPassword("11111");
+        sysUser.setPassword("123456");
+        sysUser.setName("daixinyu");
         sysUserService.save(sysUser);
-
        return "服务器2 + 8066"+request.getSession().getId();
     }
 
