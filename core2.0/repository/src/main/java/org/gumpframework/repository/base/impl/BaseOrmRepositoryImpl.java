@@ -42,6 +42,4 @@ public class BaseOrmRepositoryImpl<T extends BaseEntity> extends BaseRepositoryI
 
 
 
-
-
 }

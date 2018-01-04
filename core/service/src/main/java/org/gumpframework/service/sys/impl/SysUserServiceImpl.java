@@ -14,10 +14,11 @@ import java.util.Map;
 
 @Service
 public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysUserService {
+    @Autowired
+    private SysUserRepository sysUserRepository;
 
     @Override
-    public List<Map<String,Object>> login(String name,String password){
-        String sql = " SELECT a.name_ AS name,a.password_ AS password,a.id_ AS id from sys_user_t a where a.name_=:p1 and a.password_=:p2 ";
-        return baseQlRepository.getListBySQL(sql,name,password);
+    public List<Map<String, Object>> login(String name, String password) {
+        return null;
     }
 }
